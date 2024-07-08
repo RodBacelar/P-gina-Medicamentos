@@ -18,7 +18,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const addMedicamentoToTable = (medicamento, index) => {
     const newRow = document.createElement("tr");
     newRow.innerHTML = `
-            <td><input type="checkbox"></td>
             <td>${medicamento.nome}</td>
             <td>${medicamento.principioAtivo}</td>
             <td>${medicamento.concentracao}mg</td>
@@ -86,11 +85,13 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   window.deleteMedicamento = (index) => {
-    let medicamentos = JSON.parse(localStorage.getItem("medicamentos")) || [];
-    medicamentos.splice(index, 1);
-    localStorage.setItem("medicamentos", JSON.stringify(medicamentos));
-    tableBody.innerHTML = "";
-    loadMedicamentos();
+    if (confirm("Você tem certeza que deseja remover este medicamento?")) {
+      let medicamentos = JSON.parse(localStorage.getItem("medicamentos")) || [];
+      medicamentos.splice(index, 1);
+      localStorage.setItem("medicamentos", JSON.stringify(medicamentos));
+      tableBody.innerHTML = "";
+      loadMedicamentos();
+    }
   };
 
   loadMedicamentos();
