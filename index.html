@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gerenciar Medicamentos</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h2>Gerenciar Medicamentos</h2>
+      <button class="add-btn">Adicionar Novo Medicamento</button>
+      <table>
+        <thead>
+          <tr>
+            <th><input type="checkbox" /></th>
+            <th>Nome</th>
+            <th>Princípio Ativo</th>
+            <th>Concentração</th>
+            <th>Tarja</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><input type="checkbox" /></td>
+            <td>Medicamento 1</td>
+            <td>Princípio Ativo 1</td>
+            <td>10mg</td>
+            <td>Branca</td>
+            <td>
+              <button class="edit-btn">✏️</button>
+              <button class="delete-btn">🗑️</button>
+            </td>
+          </tr>
+          <!-- Outros registros podem ser adicionados aqui -->
+        </tbody>
+      </table>
+      <div class="pagination">
+        <button>Anterior</button>
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button>Próximo</button>
+      </div>
+    </div>
+  </body>
+</html>
