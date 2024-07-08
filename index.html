@@ -9,7 +9,7 @@
   <body>
     <div class="container">
       <h2>Gerenciar Medicamentos</h2>
-      <button class="add-btn">Adicionar Novo Medicamento</button>
+      <button class="add-btn" id="addNew">Adicionar Novo Medicamento</button>
       <table>
         <thead>
           <tr>
@@ -21,7 +21,7 @@
             <th>Ações</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody id="medicamentosTable">
           <tr>
             <td><input type="checkbox" /></td>
             <td>Medicamento 1</td>
@@ -44,5 +44,40 @@
         <button>Próximo</button>
       </div>
     </div>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Adicionar Novo Medicamento</h2>
+        <form id="medicamentoForm">
+          <label for="nome">Nome:</label>
+          <input type="text" id="nome" name="nome" required /><br /><br />
+          <label for="principioAtivo">Princípio Ativo:</label>
+          <input
+            type="text"
+            id="principioAtivo"
+            name="principioAtivo"
+            required
+          /><br /><br />
+          <label for="concentracao">Concentração:</label>
+          <input
+            type="number"
+            id="concentracao"
+            name="concentracao"
+            required
+          /><br /><br />
+          <label for="tarja">Tarja:</label>
+          <select id="tarja" name="tarja" required>
+            <option value="Branca">Branca</option>
+            <option value="Preta">Preta</option>
+            <option value="Amarela">Amarela</option></select
+          ><br /><br />
+          <button type="submit">Adicionar</button>
+        </form>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
   </body>
 </html>
