@@ -6,6 +6,29 @@ document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("medicamentoForm");
   const tableBody = document.getElementById("medicamentosTable");
 
+  const loadMedicamentos = () => {
+    const medicamentos = JSON.parse(localStorage.getItem("medicamentos")) || [];
+    medicamentos.forEach((medicamento) => {
+      addMedicamentoToTable(medicamento);
+    });
+  };
+
+  const addMedicamentoToTable = (medicamento) => {
+    const newRow = document.createElement("tr");
+    newRow.innerHTML = `
+            <td><input type="checkbox"></td>
+            <td>${medicamento.nome}</td>
+            <td>${medicamento.principioAtivo}</td>
+            <td>${medicamento.concentracao}mg</td>
+            <td>${medicamento.tarja}</td>
+            <td>
+                <button class="edit-btn">✏️</button>
+                <button class="delete-btn">🗑️</button>
+            </td>
+        `;
+    tableBody.appendChild(newRow);
+  };
+
   addNewBtn.onclick = () => {
     modal.style.display = "block";
   };
@@ -28,21 +51,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const concentracao = document.getElementById("concentracao").value;
     const tarja = document.getElementById("tarja").value;
 
-    const newRow = document.createElement("tr");
-    newRow.innerHTML = `
-            <td><input type="checkbox"></td>
-            <td>${nome}</td>
-            <td>${principioAtivo}</td>
-            <td>${concentracao}mg</td>
-            <td>${tarja}</td>
-            <td>
-                <button class="edit-btn">✏️</button>
-                <button class="delete-btn">🗑️</button>
-            </td>
-        `;
+    const medicamento = { nome, principioAtivo, concentracao, tarja };
 
-    tableBody.appendChild(newRow);
+    const medicamentos = JSON.parse(localStorage.getItem("medicamentos")) || [];
+    medicamentos.push(medicamento);
+    localStorage.setItem("medicamentos", JSON.stringify(medicamentos));
+
+    addMedicamentoToTable(medicamento);
     modal.style.display = "none";
     form.reset();
   };
+
+  loadMedicamentos();
 });
